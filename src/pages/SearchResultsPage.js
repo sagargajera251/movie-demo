@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, ScrollView } from 'react-native';
 import SearchBar from '../components/SearchBar';
+import MovieList from '../components/MovieList.js';
 import omdb from '../api/omdb';
 
 const SearchResultsPage = () => {
@@ -33,7 +34,9 @@ const SearchResultsPage = () => {
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <View><Text>Movie list goes here</Text></View>
+      <ScrollView>
+         <MovieList />
+      </ScrollView>
     </>
   );
 };
