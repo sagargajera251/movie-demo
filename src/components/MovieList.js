@@ -1,22 +1,49 @@
 import React from 'react';
 import {
   View,
-  StyleSheet, Text
+  StyleSheet,
+  FlatList,
+  Text,
+  TouchableOpacity
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-const MovieList = () => {
+const MovieList = ({ results, navigation }) => {
+  if (!results.length) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Movie ListItem</Text>
+      <FlatList
+        data={results}
+        keyExtractor={result => result.imdbID}
+        renderItem={({ item }) => {
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('ResultsShow', { id: item.imdbID })
+              }
+            >
+              <Text>Movie Item goes here</Text>
+            </TouchableOpacity>
+          );
+        }}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 15,
+    marginBottom: 5
+  },
   container: {
-    marginBottom: 10,
-    marginLeft: 15
+    marginBottom: 10
   }
 });
 
-export default MovieList;
+export default withNavigation(MovieList);
