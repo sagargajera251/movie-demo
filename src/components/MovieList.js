@@ -3,9 +3,9 @@ import {
   View,
   StyleSheet,
   FlatList,
-  Text,
   TouchableOpacity
 } from 'react-native';
+import MovieItem from './MovieItem';
 import { withNavigation } from 'react-navigation';
 
 const MovieList = ({ results, navigation }) => {
@@ -25,7 +25,7 @@ const MovieList = ({ results, navigation }) => {
                 navigation.navigate('ResultsShow', { id: item.imdbID })
               }
             >
-              <Text>Movie Item goes here</Text>
+              <MovieItem result={item} /><br/>
             </TouchableOpacity>
           );
         }}
