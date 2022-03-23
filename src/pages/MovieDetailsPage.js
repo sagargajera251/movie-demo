@@ -26,7 +26,7 @@ const MovieDetailsPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{result.Title}</Text>
-      <Image style={styles.image} source={{ uri: result.Poster }} />
+      {result?.Poster !== "N/A" ? <Image style={styles.image} source={{ uri: result.Poster }}/> : null }
       <Text>
         {result.imdbRating} Stars, Released in {result.Year}
       </Text>
