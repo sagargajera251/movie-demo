@@ -3,14 +3,19 @@ import {
   View,
   StyleSheet,
   FlatList,
+  Text,
   TouchableOpacity
 } from 'react-native';
 import MovieItem from './MovieItem';
 import { withNavigation } from 'react-navigation';
 
 const MovieList = ({ results, navigation }) => {
-  if (!results.length) {
-    return null;
+  if (!results || !results.length) {
+    return (
+        <View style={styles.noresult}>
+            <Text>No movies found with given search term</Text>
+        </View>
+    );
   }
 
   return (
@@ -43,7 +48,11 @@ const styles = StyleSheet.create({
   },
   container: {
     marginBottom: 10
+  },
+  noresult: {
+    marginLeft: 15
   }
+
 });
 
 export default withNavigation(MovieList);
