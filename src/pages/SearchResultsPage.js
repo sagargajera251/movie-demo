@@ -7,6 +7,7 @@ import omdb from '../api/omdb';
 const SearchResultsPage = () => {
   const [term, setTerm] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [results, setResults] = useState([]);
 
   const searchApi = async searchTerm => {
     try {
@@ -35,7 +36,9 @@ const SearchResultsPage = () => {
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <ScrollView>
-         <MovieList />
+         <MovieList
+          results={results}
+        />
       </ScrollView>
     </>
   );
