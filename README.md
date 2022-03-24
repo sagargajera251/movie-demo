@@ -18,3 +18,9 @@ Once above command executes properly(ignore warnings come up while executing com
 
 - Used omdb api for this application
 
+- Used navigation
+
+- In Last commit, implemented react redux and commented lines of code that were used only with hooks
+
+- Feel free to uncomment hooks related code and comment redux related code
+

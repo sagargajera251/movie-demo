@@ -1,18 +1,18 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import SearchResultsPage from './src/pages/SearchResultsPage';
-import MovieDetailsPage from './src/pages/MovieDetailsPage';
+import React from 'react';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import reducers from './reducers';
+import Container from './Container';
 
-const navigator = createStackNavigator(
-  {
-    Search: SearchResultsPage,
-    ResultsShow: MovieDetailsPage
-  },
-  {
-    initialRouteName: 'Search',   
-    defaultNavigationOptions: {
-      title: 'Movie Search' 
-    }
-  }
-);
+const App = () => {
 
-export default createAppContainer(navigator);
+    const store = createStore(reducers);
+
+    return (
+      <Provider store={store}>
+        <Container />
+      </Provider>
+    );
+}
+
+export default App;

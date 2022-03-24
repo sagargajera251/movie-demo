@@ -15,7 +15,8 @@ const MovieItem = ({ result }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 15
+    marginLeft: 15,
+    marginTop: 0
   },
   image: {
     width: 250,

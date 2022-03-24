@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, StyleSheet, ScrollView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import MovieList from '../components/MovieList.js';
@@ -6,7 +6,8 @@ import useResults from '../hooks/useResults';
 
 const SearchResultsPage = () => {
   const [term, setTerm] = useState('');
-  const [searchApi, results, errorMessage] = useResults();
+  //const [searchApi, results, errorMessage] = useResults();
+  const [searchApi, state, errorMessage] = useResults();
 
   return (
     <>
@@ -18,9 +19,14 @@ const SearchResultsPage = () => {
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <ScrollView>
          <MovieList
-          results={results}
+          results={state}
         />
       </ScrollView>
+      {/* <ScrollView>
+         <MovieList
+          results={results}
+        />
+      </ScrollView> */}
     </>
   );
 };
